@@ -4,5 +4,6 @@ db:
   username: "postgres"
   host: "localhost"
   port: "5432"
-  dbname: "gta5-modaz"
+  password: "postgres"
+  dbname: "gta5modaz"
   sslmode: "disable"

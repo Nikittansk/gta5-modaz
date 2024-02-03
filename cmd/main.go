@@ -13,7 +13,19 @@ func main() {
 		log.Fatalf("Ошибка при инициализации конфигурации: %s", err)
 	}
 
-	handlers := handler.NewHandler()
+	// _, err := repository.NewPostgresDB(repository.Config{
+	// 	Host: viper.GetString("db.host"),
+	// 	Port: viper.GetString("db.port"),
+	// 	Username: viper.GetString("db.username"),
+	// 	Password: viper.GetString("db.passwrd"),
+	// 	DBName: viper.GetString("db.dbname"),
+	// 	SSLMode: viper.GetString("db.sslmode"),
+	// })
+	// if err != nil {
+	// 	log.Fatalf("Не удалось инициализировать базу данных: %s", err)
+	// }
+
+	handlers := new(handler.Handler)
 
 	srv := new(gta5modaz.Server)
 	if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {
