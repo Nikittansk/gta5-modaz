@@ -1,6 +1,6 @@
 package gta5modaz
 
 type Category struct {
-	Id   int    `json:"-"`
-	Name string `json:"name"`
+	Id   int    `json:"-" db:"id"`
+	Name string `json:"name" binding:"required"`
 }

@@ -5,6 +5,7 @@ import (
 
 	gta5modaz "github.com/Nikittansk/gta5-modaz"
 	"github.com/Nikittansk/gta5-modaz/pkg/handler"
+	"github.com/Nikittansk/gta5-modaz/pkg/repository"
 	"github.com/spf13/viper"
 )
 
@@ -13,17 +14,17 @@ func main() {
 		log.Fatalf("Ошибка при инициализации конфигурации: %s", err)
 	}
 
-	// _, err := repository.NewPostgresDB(repository.Config{
-	// 	Host: viper.GetString("db.host"),
-	// 	Port: viper.GetString("db.port"),
-	// 	Username: viper.GetString("db.username"),
-	// 	Password: viper.GetString("db.passwrd"),
-	// 	DBName: viper.GetString("db.dbname"),
-	// 	SSLMode: viper.GetString("db.sslmode"),
-	// })
-	// if err != nil {
-	// 	log.Fatalf("Не удалось инициализировать базу данных: %s", err)
-	// }
+	_, err := repository.NewPostgresDB(repository.Config{
+		Host: viper.GetString("db.host"),
+		Port: viper.GetString("db.port"),
+		Username: viper.GetString("db.username"),
+		Password: viper.GetString("db.password"),
+		DBName: viper.GetString("db.dbname"),
+		SSLMode: viper.GetString("db.sslmode"),
+	})
+	if err != nil {
+		log.Fatalf("Не удалось инициализировать базу данных: %s", err)
+	}
 
 	handlers := new(handler.Handler)
 
